@@ -2,7 +2,6 @@ import { useState, memo } from "react";
 import "./App.css";
 
 const Button = memo(({ currentIndex, setIndex, isActive }) => {
-  console.log("rendered");
   const handleButtonClick = () => {
     setIndex(currentIndex);
   };
@@ -13,11 +12,13 @@ const Button = memo(({ currentIndex, setIndex, isActive }) => {
       style={{
         color: isActive ? "green" : "red",
       }}
+      aria-pressed={isActive}
     >
       Click {currentIndex}
     </button>
   );
 });
+Button.displayName = "Button";
 
 function App() {
   const [index, setIndex] = useState(null);
